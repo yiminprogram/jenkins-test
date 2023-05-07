@@ -1,19 +1,6 @@
-def properties = readProperties file : 'gradle.properties'
-pipeline{
-
-    agent any
-
+node{
+    def prop = readProperties file : 'gradle.properties'
     parameters {
-        string defaultValue: "${properties.VERSION}", name: 'apple'
-    }
-
-    stages{
-        stage('first'){
-            steps{
-                script{
-                    echo "version ${params.apple}"
-                }
-            }
-        }
+        string defaultValue: '1.2.3', name: 'apple'
     }
 }
