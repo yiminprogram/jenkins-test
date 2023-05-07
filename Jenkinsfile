@@ -1,17 +1,17 @@
+def properties = readProperties file : 'gradle.properties'
 pipeline{
 
     agent any
 
     parameters {
-        string defaultValue: '', name: 'version'
+        string defaultValue: "${properties.VERSION}", name: 'apple'
     }
 
     stages{
         stage('first'){
             steps{
                 script{
-                    def properties = readProperties file : 'gradle.properties'
-                    echo "version ${properties.VERSION}"
+                    echo "version ${params.apple}"
                 }
             }
         }
