@@ -1,6 +1,11 @@
 node{
     def prop = readProperties file : 'gradle.properties'
-    parameters {
-        string defaultValue: '1.2.3', name: 'apple'
+    properties([
+  parameters([
+    string(name: 'apple', defaultValue: "${prop.VERSION}"),
+  ])
+])
+    stage('Node'){
+        echo "Hello ${params.apple}"
     }
 }
